@@ -19,9 +19,6 @@ export default function Navbar() {
   }, []);
 
   const navLinks = [
-    { name: "SPECS", href: "#specs" },
-    { name: "DESIGN", href: "#design" },
-    { name: "PERFORMANCE", href: "#performance" },
     { name: "BUY NOW", href: "#buy", primary: true },
   ];
 

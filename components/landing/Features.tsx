@@ -1,112 +1,106 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useRef } from "react";
+import { cn } from "@/lib/utils";
+
+const features = [
+  {
+    title: "RTX 50 SERIES",
+    description: "Next-gen Blackwell architecture with AI-driven DLSS 4.0 and real-time path tracing.",
+    icon: "ri-cpu-line",
+    color: "text-green-500",
+    bg: "bg-green-500/10",
+    border: "border-green-500/20",
+    fullWidth: true,
+    detail: "Offering 50% more CUDA cores and 2x ray tracing performance.",
+  },
+  {
+    title: "INTEL CORE ULTRA",
+    description: "Dedicated NPU for AI workloads, unlocking new levels of productivity and creativity.",
+    icon: "ri-microchip-line",
+    color: "text-blue-500",
+    bg: "bg-blue-500/10",
+    border: "border-blue-500/20",
+    fullWidth: false,
+  },
+  {
+    title: "OLED DISPLAY",
+    description: "16-inch 4K OLED panel with 240Hz refresh rate and 100% DCI-P3 coverage.",
+    icon: "ri-computer-line",
+    color: "text-purple-500",
+    bg: "bg-purple-500/10",
+    border: "border-purple-500/20",
+    fullWidth: false,
+  },
+  {
+    title: "VAPOR CHAMBER",
+    description: "Advanced cooling system with liquid metal thermal compound and quiet fans.",
+    icon: "ri-windy-line",
+    color: "text-cyan-500",
+    bg: "bg-cyan-500/10",
+    border: "border-cyan-500/20",
+    fullWidth: true,
+    detail: "Keeps temperatures 15°C lower under heavy load compared to previous gen.",
+  },
+];
 
 export default function Features() {
   return (
-    <section className="relative z-10 bg-zinc-950 py-32 px-4 md:px-8 overflow-hidden">
-        <div className="max-w-7xl mx-auto space-y-32">
-            
-            {/* RTX 50 Series Section */}
-            <div className="flex flex-col md:flex-row items-center gap-16">
-                <motion.div 
-                    initial={{ opacity: 0, x: -50 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.8 }}
-                    className="flex-1 space-y-6"
-                >
-                    <div className="flex items-center gap-4 text-cyan-400">
-                        <i className="ri-cpu-line text-3xl"></i>
-                        <span className="font-mono tracking-widest uppercase text-sm">Graphics Architecture</span>
-                    </div>
-                    <h2 className="text-4xl md:text-6xl font-bold text-white leading-tight">
-                        NVIDIA <span className="text-green-500">RTX 50 SERIES</span>
-                    </h2>
-                    <p className="text-zinc-400 text-lg md:text-xl leading-relaxed">
-                        Experience the quantum leap in performance with the all-new Blackwell architecture. 
-                        Featuring fourth-gen Tensor Cores and Optical Flow Accelerator to power AI-generation frame rates.
-                    </p>
-                    <ul className="space-y-3 mt-4">
-                        {["DLSS 4.0 Support", "Real-time Path Tracing", "AI-Powered Graphics"].map((item, i) => (
-                            <li key={i} className="flex items-center gap-3 text-zinc-300">
-                                <i className="ri-check-line text-green-500"></i>
-                                {item}
-                            </li>
-                        ))}
-                    </ul>
-                </motion.div>
-                <motion.div 
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.8 }}
-                    className="flex-1 w-full relative group"
-                >
-                    <div className="absolute -inset-1 bg-gradient-to-r from-green-600 to-cyan-600 rounded-2xl blur opacity-25 group-hover:opacity-50 transition duration-1000"></div>
-                    <div className="relative aspect-video bg-zinc-900 rounded-2xl border border-zinc-800 flex items-center justify-center overflow-hidden">
-                        {/* Placeholder for RTX Image */}
-                        <div className="text-center group-hover:scale-105 transition duration-700">
-                            <i className="ri-dashboard-3-line text-9xl text-zinc-800 group-hover:text-green-900/50 transition-colors"></i>
-                            <div className="absolute inset-0 flex items-center justify-center text-4xl font-black text-white/10 uppercase tracking-widest">
-                                RTX 5090
-                            </div>
-                        </div>
-                    </div>
-                </motion.div>
-            </div>
-
-            {/* Intel Core Ultra Section */}
-            <div className="flex flex-col md:flex-row-reverse items-center gap-16">
-                <motion.div 
-                    initial={{ opacity: 0, x: 50 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.8 }}
-                    className="flex-1 space-y-6"
-                >
-                    <div className="flex items-center gap-4 text-blue-400">
-                         <i className="ri-microchip-line text-3xl"></i>
-                        <span className="font-mono tracking-widest uppercase text-sm">Processing Power</span>
-                    </div>
-                    <h2 className="text-4xl md:text-6xl font-bold text-white leading-tight">
-                        INTEL <span className="text-blue-500">CORE ULTRA</span>
-                    </h2>
-                    <p className="text-zinc-400 text-lg md:text-xl leading-relaxed">
-                        Unleash AI on your PC with Intel Core Ultra processors. A specialized NPU works alongside CPU and GPU to unlock new experiences.
-                    </p>
-                    <div className="grid grid-cols-2 gap-4 pt-4">
-                        <div className="bg-zinc-900/50 p-4 border border-zinc-800 rounded-lg">
-                            <div className="text-3xl font-bold text-white mb-1">5.8<span className="text-sm text-zinc-500 font-normal ml-1">GHz</span></div>
-                            <div className="text-xs text-zinc-500 uppercase tracking-wider">Max Turbo</div>
-                        </div>
-                        <div className="bg-zinc-900/50 p-4 border border-zinc-800 rounded-lg">
-                            <div className="text-3xl font-bold text-white mb-1">24<span className="text-sm text-zinc-500 font-normal ml-1">Cores</span></div>
-                            <div className="text-xs text-zinc-500 uppercase tracking-wider">Performance</div>
-                        </div>
-                    </div>
-                </motion.div>
-                <motion.div 
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.8 }}
-                    className="flex-1 w-full relative group"
-                >
-                    <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl blur opacity-25 group-hover:opacity-50 transition duration-1000"></div>
-                     <div className="relative aspect-video bg-zinc-900 rounded-2xl border border-zinc-800 flex items-center justify-center overflow-hidden">
-                        {/* Placeholder for CPU Image */}
-                        <div className="text-center group-hover:scale-105 transition duration-700">
-                             <i className="ri-cpu-line text-9xl text-zinc-800 group-hover:text-blue-900/50 transition-colors"></i>
-                            <div className="absolute inset-0 flex items-center justify-center text-4xl font-black text-white/10 uppercase tracking-widest">
-                                ULTRA 9
-                            </div>
-                        </div>
-                    </div>
-                </motion.div>
-            </div>
+    <section id="features" className="relative z-10 bg-zinc-950 py-32 px-4 md:px-8">
+      <div className="max-w-7xl mx-auto">
+        <div className="text-center mb-24 space-y-4">
+            <h2 className="text-4xl md:text-7xl font-bold bg-clip-text text-transparent bg-gradient-to-b from-white to-white/50">
+                SYSTEM CORE
+            </h2>
+            <p className="text-zinc-400 max-w-2xl mx-auto text-lg md:text-xl font-light">
+                Engineered with the most advanced components ever put into a portable machine.
+            </p>
         </div>
+        
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {features.map((feature, i) => (
+                <motion.div
+                    key={i}
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.1, duration: 0.5 }}
+                    className={cn(
+                        "relative group overflow-hidden rounded-3xl border p-8 space-y-6 transition-all duration-500 hover:border-white/20",
+                        "bg-zinc-900/30 backdrop-blur-sm",
+                        feature.fullWidth ? "md:col-span-2" : "md:col-span-1",
+                        feature.border
+                    )}
+                >
+                    <div className={cn(
+                        "absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-700 pointer-events-none",
+                        feature.bg
+                    )} />
+                    
+                    <div className="flex items-start justify-between">
+                        <div className={cn("p-3 rounded-full bg-zinc-900 border border-zinc-700", feature.color)}>
+                            <i className={cn(feature.icon, "text-2xl")}></i>
+                        </div>
+                        <i className="ri-arrow-right-up-line text-zinc-600 group-hover:text-white transition-colors duration-300"></i>
+                    </div>
+
+                    <div className="space-y-2 relative z-10">
+                        <h3 className="text-2xl font-bold text-white group-hover:text-cyan-200 transition-colors">
+                            {feature.title}
+                        </h3>
+                        <p className="text-zinc-400 group-hover:text-zinc-300 transition-colors leading-relaxed">
+                            {feature.description}
+                        </p>
+                        {feature.detail && (
+                             <p className="pt-4 text-sm font-mono text-zinc-500 border-t border-white/5 mt-4">
+                                {feature.detail}
+                             </p>
+                        )}
+                    </div>
+                </motion.div>
+            ))}
+        </div>
+      </div>
     </section>
   );
 }

@@ -148,7 +148,7 @@ export default function LaptopSequence() {
       {/* CANVAS */}
       <canvas
         ref={canvasRef}
-        className="absolute inset-0 w-full h-full object-fit"
+        className="absolute inset-0 w-full h-full object-cover 2xl:object-fill"
       />
 
       {/* ==========================
